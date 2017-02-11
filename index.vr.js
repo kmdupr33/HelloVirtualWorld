@@ -6,32 +6,42 @@ import {
   Pano,
   Text,
   View,
-  Image
+  Image,
+  VrButton
 } from 'react-vr';
+
+import { H1,
+  H2,
+  CodeImage,
+  transformFromDirection
+} from './elements';
 
 
 class WelcomeToVR extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('white-world.png')}/>
-        <Text
-          style={{
-            fontSize: 0.5,
-            layoutOrigin: [0.5, 0.5],            
-            transform: [{translate: [0, 0, -3]}],
-          }}>
-          Hello, Virtual World
-        </Text>
-        {/* <Image
-          source={asset('code.png')}
-          style={{
-            width: 10,
-            height: 10,
-            padding: 0.02,
-            layoutOrigin: [0.5, 0.5],
-            transform: [{translate: [0, 0, -10]}],
-          }}/> */}
+        <Pano style={{position: 'absolute'}}
+          source={asset('white-world.png')}/>
+        <View style={{
+          layoutOrigin: [0.5, 0.5],
+          transform: transformFromDirection('front'),
+          flexDirection: 'column',
+          position: 'absolute',
+          alignItems: 'center'
+        }}>
+          <H1>
+            Hello, Virtual World
+          </H1>
+          <H2>
+            An Introduction to ReactVR //
+          </H2>
+        </View>
+        <VrButton
+          style={{layoutOrigin: [0.5, 0.5], position: 'absolute', transform: transformFromDirection('right')}}
+          onClick={() => console.log('hello')}>
+          <H1>Background</H1>
+        </VrButton>
       </View>
     );
   }
