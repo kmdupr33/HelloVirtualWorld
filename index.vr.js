@@ -85,10 +85,22 @@ const UnderTheHood = (props) => {
   return (
     <View>
       <AbsolutePano source={asset('under-the-hood.jpg')}/>
-      <H1 style={{position: 'absolute', layoutOrigin: [0.5, 0.5]}} direction='behind'>Under the hood</H1>
+      <H1 style={{position: 'absolute', layoutOrigin: [0.5, 0.5]}}
+        direction='behind'>
+        Under the hood
+      </H1>
+      <Image style={[styles.centerOrigin,
+        {transform: [{translate: [-500, 0,0]}, {rotateY: 90}],
+        position: 'absolute',
+        width: 1000,
+        height: 558}]} source={asset('meta-code.png')}/>
+      <Image style={[styles.centerOrigin, {transform: [{translate: [0, 0, -400]}], width: 406, height: 363}]}
+        source={asset('coordinates.jpg')}
+        />
       <VrButton
         onClick={() => props.switcher.switchRoute({name: 'introduction'})}
-        style={{position: 'absolute', layoutOrigin: [0.5, 0.5], transform: transformFromDirection('right')}}>
+        style={{position: 'absolute', layoutOrigin: [0.5, 0.5],
+        transform: transformFromDirection('right')}}>
         <H1>Back for one more</H1>
       </VrButton>
     </View>
@@ -117,7 +129,8 @@ class WelcomeToVR extends React.Component {
 };
 
 const styles = StyleSheet.create({
-  button: {layoutOrigin: [0.5, 0.5], position: 'absolute'}
+  button: {layoutOrigin: [0.5, 0.5], position: 'absolute'},
+  centerOrigin: {layoutOrigin: [0.5, 0.5]}
 })
 
 AppRegistry.registerComponent('WelcomeToVR', () => WelcomeToVR);
