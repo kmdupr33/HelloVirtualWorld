@@ -73,7 +73,8 @@ const Background = (props) => {
         source={asset('react-vr-stack.png')}
         />
       <VrButton
-        style={[styles.button, {transform: transformFromDirection('front'), layoutOrigin: [0.5, 0.5]}]}>
+        style={[styles.button, {transform: transformFromDirection('front'), layoutOrigin: [0.5, 0.5]}]}
+        onClick={()=> props.switcher.switchRoute({name: 'introduction'})}>
         <H1>Now, where were we...</H1>
       </VrButton>
     </View>
@@ -95,7 +96,7 @@ class WelcomeToVR extends React.Component {
             return <IntroComponent switcher={switcher}/>
           case 'background':
             console.log('renering background world');
-            return <Background/>
+            return <Background switcher={switcher}/>
           case 'underTheHood':
             return <UnderTheHood/>
           default:
