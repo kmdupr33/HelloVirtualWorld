@@ -82,7 +82,17 @@ const Background = (props) => {
 }
 
 const UnderTheHood = (props) => {
-  return <AbsolutePano source={asset('under-the-hood.jpg')}/>
+  return (
+    <View>
+      <AbsolutePano source={asset('under-the-hood.jpg')}/>
+      <H1 style={{position: 'absolute', layoutOrigin: [0.5, 0.5]}} direction='behind'>Under the hood</H1>
+      <VrButton
+        onClick={() => props.switcher.switchRoute({name: 'introduction'})}
+        style={{position: 'absolute', layoutOrigin: [0.5, 0.5], transform: transformFromDirection('right')}}>
+        <H1>Back for one more</H1>
+      </VrButton>
+    </View>
+  )
 }
 
 class WelcomeToVR extends React.Component {
@@ -98,7 +108,7 @@ class WelcomeToVR extends React.Component {
             console.log('renering background world');
             return <Background switcher={switcher}/>
           case 'underTheHood':
-            return <UnderTheHood/>
+            return <UnderTheHood switcher={switcher}/>
           default:
             return <H1>I don't recognize this route. Check your switch statement</H1>
         }
